@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete.Repositories;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,25 +10,41 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-   public class CategoryManager
-    {
-        GenericRepositorycs<Category> repo = new GenericRepositorycs<Category>();
 
-        public List<Category> GetAll()
+    //senin interface inde tanımlanan metotları kalıtsal yollarla al.
+    public class CategoryManager : ICategoryService
+    {
+        ICategoryDal _categorydal;
+
+        public CategoryManager(ICategoryDal categorydal)
         {
-            return repo.List();
+            _categorydal = categorydal;
         }
-        public void CategoryAddBL(Category p)
+
+
+        public List<Category> GetList()
         {
-            if(p.CategotyName == "" || p.CategotyName.Length <= 3 || 
-                p.CategotyDescription =="" || p.CategotyName.Length >= 51)
-            {
-                //hata mesajı
-            }
-            else
-            {
-                repo.Insert(p);
-            }
+
+            //verileri listelemek için oluştu.
+            return _categorydal.List();
+            
+        }
+
+        public void CategoryAddBL(Category category)
+        {
+            _categorydal.Insert(category);
+
+
+        }
+
+        public void ICategoryAdd(Category category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Category> GetCategoryList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
