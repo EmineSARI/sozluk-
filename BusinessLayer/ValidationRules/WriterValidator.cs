@@ -2,6 +2,7 @@
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,10 @@ namespace BusinessLayer.ValidationRules
                 RuleFor(x => x.WriterAbout).NotEmpty().WithMessage("Hakkımda alanını boş geçemezsiniz");
                 RuleFor(x => x.WriterSurName).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakter girin.");
             }
+
+        public static implicit operator ValidationResult(WriterValidator v)
+        {
+            throw new NotImplementedException();
         }
+    }
 }
