@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace WebApplication1.Controllers
         {
             var WriterValues = wm.GetList();
             return View(WriterValues);
+        }
+
+        [HttpGet]
+        public ActionResult AddWriter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddWriter(Writer p)
+        {
+            return View();
         }
     }
 }
