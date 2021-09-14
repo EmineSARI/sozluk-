@@ -18,7 +18,8 @@ namespace BusinessLayer.ValidationRules
                 RuleFor(x => x.WriterName).NotEmpty().WithMessage("Yazar adını boş geçemezsiniz");
                 RuleFor(x => x.WriterSurName).NotEmpty().WithMessage("Yazar soyadını  boş geçemezsiniz.");
                 RuleFor(x => x.WriterAbout).NotEmpty().WithMessage("Hakkımda alanını boş geçemezsiniz");
-                RuleFor(x => x.WriterSurName).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakter girin.");
+                RuleFor(x => x.WriterTitle).NotEmpty().WithMessage("Unvan alanını boş geçemezsiniz");
+               RuleFor(x => x.WriterSurName).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakter girin.");
             }
 
         public static implicit operator ValidationResult(WriterValidator v)
