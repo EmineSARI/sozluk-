@@ -13,14 +13,15 @@ namespace WebApplication1.Controllers
         // GET: Content
 
         ContentManager cm = new ContentManager(new EFContentDal());
+
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult ContentByHeading( int id )
+        public ActionResult ContentByHeading(int id)
         {
-            var contentvalues = cm.GetListByID(id);
-            return View();
+            var contentvalues = cm.GetListByHeadingID(id);
+            return View(contentvalues);
         }
 
     }
