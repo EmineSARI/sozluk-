@@ -42,10 +42,7 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Category> GetCategoryList()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Category GetByID(int id)
         {
@@ -60,6 +57,11 @@ namespace BusinessLayer.Concrete
         public void CategoryUpdate(Category category)
         {
             _categorydal.Update(category);
+        }
+
+        public List<Category> GetCategoryList()
+        {
+            return _categorydal.List();
         }
     }
 }

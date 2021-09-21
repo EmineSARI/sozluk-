@@ -25,8 +25,10 @@ namespace BusinessLayer.Concrete
 
         public List<Heading> GetCategoryList()
         {
-            return _headingDal.List();
+             return _headingDal.List();
         }
+
+        
 
         public void HeadingAdd(Heading heading)
         {

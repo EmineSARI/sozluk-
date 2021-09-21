@@ -14,6 +14,7 @@ namespace WebApplication1.Controllers
         // GET: Heading
         HeadingManager hm = new HeadingManager(new EFHeadingDal());
         CategoryManager ch = new CategoryManager(new EFCategoryDal());
+        WriterManager wm = new WriterManager(new EFWriterDal());
 
         public ActionResult Index()
         {
@@ -31,7 +32,15 @@ namespace WebApplication1.Controllers
 
                                                   }
                                                   ).ToList();
+            List<SelectListItem> valuewriter=(from x in wm.GetList()
+                                              select new SelectListItem
+                                              {
+                                                  Text=x.WriterName + "" +x.WriterSurName,
+                                                  Value=x.WriterID.ToString()
+
+                                              }).ToList();
             ViewBag.vlc = valuecategory;
+            ViewBag.vlw = valuewriter;
             return View();
                                                
           
